@@ -37,13 +37,12 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'mbbill/undotree/'
 
 " Other visual enhancement
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'itchyny/vim-cursorword'
 
 " Git
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
 Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
@@ -239,14 +238,14 @@ map <LEADER>tm :TableModeToggle<CR>
 
 
 
-"                        === vim-indent-guide ===                            "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent = 1
-silent! unmap <LEADER>ig
-autocmd WinEnter * silent! unmap <LEADER>ig
+""                        === vim-indent-guide ===                            "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:indent_guides_guide_size = 1
+"let g:indent_guides_start_level = 2
+"let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_color_change_percent = 1
+"silent! unmap <LEADER>ig
+"autocmd WinEnter * silent! unmap <LEADER>ig
 
 
 
@@ -289,18 +288,7 @@ let g:undotree_DiffAutoOpen = 0
 map <LEADER>al :UndotreeToggle<CR>
 
 
-"                    === indent-guides ===                                   "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 默认打开
-let g:indent_guides_enable_on_vim_startup = 1
-map <LEADER>ig :IndentGuidesToggle<CR>
 
-"                     === vim-signify ===                                    "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:signify_sign_add               = '+'
-let g:signify_sign_delete            = '-'
-let g:signify_sign_delete_first_line = '='
-let g:signify_sign_change            = '!'
 
 "                    == vim-multiple-cursor ===                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
