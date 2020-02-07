@@ -9,11 +9,7 @@
 
 - **use config**
 
-<<<<<<< HEAD
- - ```cp ~/.vim/sourcefile/vimrc ~/.vimrc```
-=======
  - ```cp ~/.vim/vimrc ~/.vimrc```
->>>>>>> ffeacfb5c20b795ae09af87eaf68a1144d2723ba
 
 - [Install vim-plug](https://github.com/junegunn/vim-plug)
 
