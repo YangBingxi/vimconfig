@@ -31,7 +31,7 @@ Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 
 " Auto Complete
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 
 " Undo Tree
 Plug 'mbbill/undotree/'
@@ -116,6 +116,11 @@ Plug 'lfv89/vim-interestingwords'
 "format
 Plug 'Chiel92/vim-autoformat'
 
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 
@@ -178,15 +183,15 @@ call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 "                        === You Complete ME ===                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap g/ :YcmCompleter GetDoc<CR>
-nnoremap gt :YcmCompleter GetType<CR>
-nnoremap gr :YcmCompleter GoToReferences<CR>
-let g:ycm_autoclose_preview_window_after_completion=0
-let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_use_clangd = 0
-let g:ycm_python_interpreter_path = "/usr/bin/python3"
-let g:ycm_python_binary_path = "/usr/bin/python3"
+"nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap g/ :YcmCompleter GetDoc<CR>
+"nnoremap gt :YcmCompleter GetType<CR>
+"nnoremap gr :YcmCompleter GoToReferences<CR>
+"let g:ycm_autoclose_preview_window_after_completion=0
+"let g:ycm_autoclose_preview_window_after_insertion=1
+"let g:ycm_use_clangd = 0
+"let g:ycm_python_interpreter_path = "/usr/bin/python3"
+"let g:ycm_python_binary_path = "/usr/bin/python3"
 
 
 "                                 === ale ===                                "
@@ -384,4 +389,49 @@ noremap <LEADER>af :Autoformat<CR>
 "                             === vim-gitgutter ===                          "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set updatetime=100 "100ms
+
+"                                === vim-lsp ===                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:asyncomplete_auto_popup = 1
+set completeopt+=preview
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> <f2> <plug>(lsp-rename)
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+"for bash
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'whitelist': ['sh'],
+        \ })
+endif
+let g:ale_linters = {
+    \ 'sh': ['language_server'],
+    \ }
+
 

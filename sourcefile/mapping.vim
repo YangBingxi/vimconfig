@@ -68,7 +68,7 @@ noremap - $
 noremap H 5h
 noremap L 5l
 noremap K 5k
-noremap KJ 5j
+noremap J 5j
 
 "LEADER CR为取消显示搜索结果"
 noremap <LEADER><CR> :nohlsearch<CR>
