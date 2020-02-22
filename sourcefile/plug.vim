@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
 "UI&Theme
 Plug 'vim-airline/vim-airline'
 Plug 'connorholyday/vim-snazzy'
+Plug 'mhinz/vim-startify'
 
 " File navigation
 Plug 'scrooloose/nerdtree'
@@ -32,13 +33,19 @@ Plug 'w0rp/ale'
 
 " Auto Complete
 "Plug 'Valloric/YouCompleteMe'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " Undo Tree
 Plug 'mbbill/undotree/'
 
 " Other visual enhancement
-"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'yggdroot/indentline' "indentline
 Plug 'itchyny/vim-cursorword'
+Plug 'lfv89/vim-interestingwords' "word highlight
 
 " Git
 Plug 'rhysd/conflict-marker.vim'
@@ -75,6 +82,12 @@ Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to 
 Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+Plug 'jiangmiao/auto-pairs' "Auto Pairs
+Plug 'ctrlpvim/ctrlp.vim' " file search
+Plug 'easymotion/vim-easymotion' "quick motion
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'brooth/far.vim' "search and replace
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -82,45 +95,12 @@ Plug 'kana/vim-textobj-user'
 Plug 'fadein/vim-FIGlet'
 
 
-"Auto Pairs
-Plug 'jiangmiao/auto-pairs'
-
-"vimwiki
+" Tool
 Plug 'vimwiki/vimwiki'
-
-"calendar
 Plug 'itchyny/calendar.vim'
+Plug 'Chiel92/vim-autoformat' "format
 
 
-"vim-startify
-Plug 'mhinz/vim-startify'
-
-"indentline
-Plug 'yggdroot/indentline'
-"file search
-Plug 'ctrlpvim/ctrlp.vim'
-
-"quick motion
-Plug 'easymotion/vim-easymotion'
-
-"serach
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
-
-"fuzzy search
-Plug 'brooth/far.vim'
-
-"word highlight
-Plug 'lfv89/vim-interestingwords'
-
-"format
-Plug 'Chiel92/vim-autoformat'
-
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 
@@ -136,7 +116,7 @@ call plug#end()
 "使用snazzy配色
 color snazzy
 "使用透明
-"let g:SnazzyTransparent = 1
+let g:SnazzyTransparent = 1
 
 "                           === NERDTree ===                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -260,32 +240,7 @@ map <LEADER>gy :Goyo<CR>
 
 
 
-"                       === vim-signiture ===                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"给某行添加书签，如ma 则给某行添加一个叫a的标签,用空格标签名进行跳转 === "
-let g:SignatureMap = {
-        \ 'Leader'             :  "m",
-        \ 'PlaceNextMark'      :  "m,",
-        \ 'ToggleMarkAtLine'   :  "m.",
-        \ 'PurgeMarksAtLine'   :  "dm-",
-        \ 'DeleteMark'         :  "dm",
-        \ 'PurgeMarks'         :  "dm/",
-        \ 'PurgeMarkers'       :  "dm?",
-        \ 'GotoNextLineAlpha'  :  "m<LEADER>",
-        \ 'GotoPrevLineAlpha'  :  "",
-        \ 'GotoNextSpotAlpha'  :  "m<LEADER>",
-        \ 'GotoPrevSpotAlpha'  :  "",
-        \ 'GotoNextLineByPos'  :  "",
-        \ 'GotoPrevLineByPos'  :  "",
-        \ 'GotoNextSpotByPos'  :  "mn",
-        \ 'GotoPrevSpotByPos'  :  "mp",
-        \ 'GotoNextMarker'     :  "",
-        \ 'GotoPrevMarker'     :  "",
-        \ 'GotoNextMarkerAny'  :  "",
-        \ 'GotoPrevMarkerAny'  :  "",
-        \ 'ListLocalMarks'     :  "m/",
-        \ 'ListLocalMarkers'   :  "m?"
-        \ }
+
 
 "                   === Undotree 版本管理 ===                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -435,3 +390,7 @@ let g:ale_linters = {
     \ }
 
 
+"                                === python-mode ===                         "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_python = 'python3'
+let g:pymode_python = 'python3'
