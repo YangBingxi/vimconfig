@@ -103,20 +103,25 @@ let mapleader=" "
 "不兼容vi指令
 set nocompatible
 "快捷键打开vimrc
-map <LEADER>rc :edit ~/.vimrc<CR>
+map <LEADER>rc :edit $VIM\sysinit.vim<CR>
 "Q为退出"
 map Q :q<CR>
 "<C-s>为保存"
-map <C-s> <Esc>:w<CR>"
-inoremap <C-s> <Esc>:w<CR>"
+map <C-s> <Esc>:w<CR>
+inoremap <C-s> <Esc>:w<CR>
 "<C-a>为全选"
-map <C-a> <Esc>ggvG<CR>"
-inoremap <C-a> <Esc>ggvG<CR>"
-
+map <C-a> <Esc>ggvG
+inoremap <C-a> <Esc>ggvG
+"<C-y>为复制到系统粘贴板"
+noremap <C-y> "+y
+"<C-z>为撤销"
+inoremap <C-z> <Esc>ui
+map<C-z> <Esc>u
 "R为配置生效"
 map R :source $VIM\sysinit.vim<CR>
 "取消s快捷键，s快捷键原为删掉当前字符开始插入"
 map s <nop>
+map S <nop>
 "     设置分屏      "
 "       左右
 map vs :set splitright<CR>:vsplit<CR>
@@ -287,7 +292,6 @@ Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
 Plug 'jiangmiao/auto-pairs' "Auto Pairs
-Plug 'ctrlpvim/ctrlp.vim' " file search
 Plug 'easymotion/vim-easymotion' "quick motion
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -526,11 +530,6 @@ noremap <LEADER>acy :Calendar -view=year<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "快速打开startify
 noremap <LEADER>am :Startify<CR>
-
-
-"                               === ctrlp ===                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_map='<C-p>'
 
 
 "                                === easymotion ===                          "
